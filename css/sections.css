@@ -1140,7 +1140,7 @@ body[data-tone=forest] .closing,body[data-tone=sage] .closing{ background:linear
 .package-pro .package-top{ gap:14px; }
 .package-badge{ margin-left:auto; margin-right:14px; padding:6px 11px 7px; border-radius:999px; background:var(--accent); color:#1d2b20; font-size:12.5px; font-weight:500; line-height:1; letter-spacing:0; white-space:nowrap; }
 .package-pro{ box-shadow:0 30px 60px -28px #16261c8c, 0 2px 6px #16261c1f; }
-@media(min-width:1101px){ .pricing-grid{ align-items:stretch; } .package-pro{ margin-top:-14px; } }
+@media(min-width:1101px){ .pricing-grid{ align-items:stretch; } }
 .package-custom{ position:relative; border-color:#c9cfbf; }
 .package-custom::before{ content:''; position:absolute; top:-1px; left:28px; right:28px; height:3px; border-radius:0 0 3px 3px; background:var(--corten); }
 .package-custom .package-top>.icon{ color:var(--corten); }
@@ -1153,7 +1153,7 @@ body[data-tone=forest] .closing,body[data-tone=sage] .closing{ background:linear
 
 /* packages round 2: two website offers side by side, the request band below, all with physical depth */
 @media(min-width:761px){ .pricing-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); gap:26px; } }
-.package{ position:relative; isolation:isolate; background:linear-gradient(165deg,#eef1e7 0%,#e3e8d9 100%);
+.package{ position:relative; isolation:isolate; background:linear-gradient(165deg,#e3e9d8 0%,#d4dcc4 100%);
   box-shadow:inset 0 1px 0 #ffffffcc, inset 0 -2px 0 #1c29220f, 0 1px 2px #16261c14, 0 14px 28px -16px #16261c40, 0 42px 80px -44px #16261c4d;
   transform-style:preserve-3d; transition:transform 600ms cubic-bezier(.23,1,.32,1), box-shadow 600ms cubic-bezier(.23,1,.32,1); }
 .package-pro{ background:radial-gradient(120% 70% at 18% 0%,#2b5239 0%,transparent 60%),linear-gradient(165deg,#1f412f 0%,#16301f 100%);
