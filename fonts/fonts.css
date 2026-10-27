@@ -4,7 +4,7 @@
   font-weight: 400;
   font-stretch: normal;
   font-display: swap;
-  src: url(instrument-sans-0.ttf) format('truetype');
+  src: url(instrument-sans-0.woff2) format('woff2');
 }
 @font-face {
   font-family: 'Instrument Sans';
@@ -12,7 +12,7 @@
   font-weight: 500;
   font-stretch: normal;
   font-display: swap;
-  src: url(instrument-sans-1.ttf) format('truetype');
+  src: url(instrument-sans-1.woff2) format('woff2');
 }
 @font-face {
   font-family: 'Instrument Sans';
@@ -20,19 +20,19 @@
   font-weight: 600;
   font-stretch: normal;
   font-display: swap;
-  src: url(instrument-sans-2.ttf) format('truetype');
+  src: url(instrument-sans-2.woff2) format('woff2');
 }
 @font-face {
   font-family: 'Instrument Serif';
   font-style: italic;
   font-weight: 400;
   font-display: swap;
-  src: url(instrument-serif-italic-3.ttf) format('truetype');
+  src: url(instrument-serif-italic-3.woff2) format('woff2');
 }
 @font-face {
   font-family: 'Instrument Serif';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(instrument-serif-4.ttf) format('truetype');
+  src: url(instrument-serif-4.woff2) format('woff2');
 }

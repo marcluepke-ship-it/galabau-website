@@ -338,7 +338,7 @@ body[data-tone=forest] .offer,body[data-tone=forest] .contact{ background:#dae2c
 .demo-hero-image>img { width:100%; height:100%; object-fit:cover; }
 .demo-hero-image>span { position:absolute; bottom:1.5cqw; right:1.8cqw; padding:.7cqw 1cqw; font-size:.85cqw; background:#edf0db; }
 .demo-services { height:7cqw; display:grid; grid-template-columns:1.25fr 1fr 1.25fr 1fr; align-items:center; gap:2cqw; padding:0 3.4cqw; border-bottom:1px solid #c3cdba; font-size:1.1cqw; }
-.demo-services>span:first-child { font-size:1cqw; line-height:1.5; }
+.demo-services>span:first-child { font-size:1cqw; line-height:1.3; white-space:nowrap; }
 .demo-services strong { font-weight:500; }
 .demo-projects { display:grid; grid-template-columns:.85fr 1fr 1fr; gap:2.2cqw; padding:2.4cqw 3.4cqw; }
 .demo-projects h4 { font-size:2.5cqw; font-weight:400; line-height:1.05; margin:.4cqw 0 0; letter-spacing:-.025em; }
@@ -1089,7 +1089,7 @@ body[data-tone=forest] .closing,body[data-tone=sage] .closing{ background:linear
     .closing-line{ animation:closing-rise linear both; animation-timeline:view(); animation-range:entry 10% cover 55%; }
   }
 }
-@keyframes closing-rise{ from{ opacity:.25; transform:translateY(70px); filter:blur(4px); } to{ opacity:1; transform:none; filter:none; } }
+@keyframes closing-rise{ from{ opacity:.25; transform:translateY(70px); } to{ opacity:1; transform:none; } }
 .site-footer{ margin-top:0; border-radius:0; }
 @media(max-width:760px){ .closing{ padding:110px 24px 80px; } .closing-line{ font-size:clamp(40px,11.5vw,56px); } }
 
@@ -1132,3 +1132,21 @@ body[data-tone=forest] .closing,body[data-tone=sage] .closing{ background:linear
 .footer-social a:active{ transform:scale(.95); }
 .footer-social .icon{ width:19px; height:19px; }
 .footer-social .brand{ fill:currentColor; stroke:none; }
+
+/* performance: on phones the notification glass is near-opaque anyway; skip the live backdrop blur while it moves */
+@media(max-width:760px){ .sc-note{ -webkit-backdrop-filter:none; backdrop-filter:none; background:#f3f5f0; } }
+
+/* packages: Pro leads, Basis follows, Spezial stays compact but clearly "more than a website" */
+.package-pro .package-top{ gap:14px; }
+.package-badge{ margin-left:auto; margin-right:14px; padding:6px 11px 7px; border-radius:999px; background:var(--accent); color:#1d2b20; font-size:12.5px; font-weight:500; line-height:1; letter-spacing:0; white-space:nowrap; }
+.package-pro{ box-shadow:0 30px 60px -28px #16261c8c, 0 2px 6px #16261c1f; }
+@media(min-width:1101px){ .pricing-grid{ align-items:stretch; } .package-pro{ margin-top:-14px; } }
+.package-custom{ position:relative; border-color:#c9cfbf; }
+.package-custom::before{ content:''; position:absolute; top:-1px; left:28px; right:28px; height:3px; border-radius:0 0 3px 3px; background:var(--corten); }
+.package-custom .package-top>.icon{ color:var(--corten); }
+.package-custom .package-fit{ color:#3c4a3a; }
+.custom-topics{ flex-wrap:wrap; gap:8px; }
+.custom-topics>span{ padding:7px 12px 8px; border:1px solid #b4592f59; border-radius:999px; color:#7a3a1d; background:#b4592f0f; font-size:13px; font-weight:500; line-height:1; }
+.button-outline{ background:transparent; color:var(--ink); box-shadow:inset 0 0 0 1px #1c2922; }
+.button-outline:hover{ background:#1c29220d; }
+@media(max-width:380px){ .package-badge{ margin-right:10px; font-size:12px; padding:5px 9px 6px; } }
