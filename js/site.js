@@ -204,6 +204,33 @@
       setStatus('Der E-Mail-Entwurf konnte nicht geöffnet werden. Bitte schreiben Sie direkt an marc.luepke@icloud.com.', 'error');
     }
   });
+  // The short field under the packages only hands its text to the main form; nothing is sent from here.
+  const requestForm = document.getElementById('request-form');
+  if (requestForm) {
+    const requestField = requestForm.querySelector('textarea');
+    requestForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const message = form.elements.namedItem('message');
+      const packageSelect = form.elements.namedItem('paket');
+      const text = (requestField?.value || '').trim();
+      if (message instanceof HTMLTextAreaElement && text) {
+        message.value = message.value.trim() ? `${message.value.trim()}\n${text}` : text;
+        message.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+      if (packageSelect instanceof HTMLSelectElement) {
+        packageSelect.value = 'Spezialanfertigung';
+        packageSelect.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      document.getElementById('kontakt')?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      form.elements.namedItem('name')?.focus({ preventScroll: true });
+    });
+    const requestFieldset = requestForm.querySelector('fieldset');
+    if (requestFieldset) requestFieldset.disabled = false;
+    const requestFallback = requestForm.querySelector('.request-fallback');
+    if (requestFallback) requestFallback.hidden = true;
+  }
+
   // Enable last, after the submit prevention and validation handlers are installed.
   if (fieldset) fieldset.disabled = false;
   const fallback = form.querySelector('[data-form-fallback]');

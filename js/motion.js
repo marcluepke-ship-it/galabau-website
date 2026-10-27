@@ -170,7 +170,7 @@
     const width = Math.max(1, mix('width'));
     const height = Math.max(1, mix('height'));
     setTransform(garden, `translate3d(${mix('x').toFixed(2)}px,${mix('y').toFixed(2)}px,0) scale(${(width / full.width).toFixed(5)},${(height / full.height).toFixed(5)})`);
-    const push = upgrading ? 1 : 1 + .32 * ease(range(p, 0, .11)) * (1 - ease(range(p, .1, .3)));
+    const push = upgrading ? 1 : 1 + .18 * ease(range(p, 0, .11)) * (1 - ease(range(p, .1, .3)));
     setTransform(gardenImage, `scale(${(Math.max(1, ratio * height / width) * push).toFixed(5)},${(Math.max(1, width / (height * ratio)) * push).toFixed(5)})`);
     setStageVar('--photo-opacity', (1 - ease(range(p, .735, .77))).toFixed(4));
     setStageVar('--garden-restored', p >= .73 ? '1' : '0');
@@ -244,7 +244,7 @@
     setStageVar('--old-load', range(p, .27, .42).toFixed(4));
     setStageVar('--side-in', ease(range(p, .26, .36)).toFixed(4));
     setStageVar('--swatch-in', ease(range(p, .62, .7)).toFixed(4));
-    const message = p > .68;
+    const message = p > .75;
     if (message !== lastMessage) {
       lastMessage = message;
       stage.classList.toggle('has-message', message);
@@ -428,5 +428,26 @@
       });
     }, {rootMargin: '-35% 0px -40% 0px', threshold: 0});
     chapters.forEach((chapter) => toneObserver.observe(chapter));
+  }
+
+  // Package cards lean a few degrees toward the pointer, like a card picked up from the table.
+  for (const card of document.querySelectorAll('.pricing-grid .package:not(.package-request)')) {
+    let frame = 0;
+    card.addEventListener('pointermove', (event) => {
+      if (preference.matches || !finePointer.matches || event.pointerType !== 'mouse') return;
+      const box = card.getBoundingClientRect();
+      const x = (event.clientX - box.left) / box.width - .5;
+      const y = (event.clientY - box.top) / box.height - .5;
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        card.classList.add('is-tilting');
+        card.style.transform = `perspective(1400px) rotateX(${(-y * 4).toFixed(2)}deg) rotateY(${(x * 5).toFixed(2)}deg) translateY(-6px)`;
+      });
+    });
+    card.addEventListener('pointerleave', () => {
+      cancelAnimationFrame(frame);
+      card.classList.remove('is-tilting');
+      card.style.transform = '';
+    });
   }
 })();
